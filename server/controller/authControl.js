@@ -1,8 +1,9 @@
 const { connect } = require("getstream");
 const bcrypt = require("bcrypt");
-const StreamChat = require("stream-chat");
+const StreamChat = require("stream-chat").StreamChat;
 const crypto = require("crypto");
 
+require("dotenv").config();
 const api_key = process.env.STREAM_API_KEY;
 const api_secret = process.env.STREAM_API_SECRET;
 const api_id = process.env.STREAM_API_ID;
@@ -42,14 +43,12 @@ const login = async (req, res) => {
     const token = serverClient.createUserToken(user[0].id);
 
     if (success) {
-      res
-        .status(200)
-        .json({
-          token,
-          fullname: user[0].fullname,
-          username,
-          userID: user[0].id,
-        });
+      res.status(200).json({
+        token,
+        fullname: user[0].fullname,
+        username,
+        userID: user[0].id,
+      });
     } else {
       res.status(500).json({ message: "Incorrect Credential" });
     }
