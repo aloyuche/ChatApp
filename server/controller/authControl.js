@@ -4,7 +4,7 @@ const StreamChat = require("stream-chat").StreamChat;
 const crypto = require("crypto");
 
 require("dotenv").config();
-const api_key = process.env.STREAM_API_KEY;
+const api_key = "sk98w2xrqkjz";
 const api_secret = process.env.STREAM_API_SECRET;
 const api_id = process.env.STREAM_API_ID;
 
